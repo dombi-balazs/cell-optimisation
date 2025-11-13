@@ -1,5 +1,5 @@
 function initial_population()
-    initial_population_size = 10000
+    initial_population_size = 10
     population_matrix = rand(1:10, initial_population_size, 5)
     return population_matrix
 end
@@ -52,6 +52,7 @@ function cell_optimisation()
     for generation in 1:max_generations
         ranked_population_with_fitness = fitness(population)
         best_fitness = ranked_population_with_fitness[1, 6]
+        println("Generation: $generation, actual best fitness value: $best_fitness")
         if best_fitness >= fitness_target_value
             println("Exit, reached the target fitness value at ", fitness_target_value, " by the ", generation, ". generation.")
             break
