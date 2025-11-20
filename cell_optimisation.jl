@@ -25,11 +25,12 @@ function crossover(top_half_population, bottom_half_population)
     num_offspring = size(bottom_half_population, 1)
     new_chromosomes = Array{Int64}(undef, num_offspring, 5)
     for i in 1:num_offspring
+        crossover_point = rand(1:4)
         parent1_index = rand(1:size(top_genes, 1))
         parent2_index = rand(1:size(top_genes, 1))
         parent1 = top_genes[parent1_index, :]
         parent2 = top_genes[parent2_index, :]
-        child_genes = [parent1[1:3]; parent2[4:5]]
+        child_genes = [parent1[1:crossover_point]; parent2[crossover_point+1:end]]
         new_chromosomes[i, :] = child_genes
     end
     return new_chromosomes
